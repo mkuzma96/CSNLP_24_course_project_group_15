@@ -1,0 +1,51 @@
+f"""
+        TASK DESCRIPTION \n
+        \n
+        You are an algorithm for extracting information from receipts in Switzerland. \n
+        Please output extraction for the entities given in steps in the enumerated list below delimited by #### token. \n
+        A short description is provided for each entity to help you with the extraction. Focus on this description when performing the extraction task. \n
+        Ensure that the output makes sense according to the requested entities and the provided descriptions. \n
+        \n
+        ####\n
+        The list of entities: \n
+        Step 1) Company name. \n
+        Description: Name of the company that issued the receipt. This name is usually located somewhere at the beginning of the receipt. Sometimes it is a legal company name with extension GmbH or AG, since the receipts are from companies in Switzerland. \n
+        Step 2) Supplier VAT number. \n
+        Description: The Swiss VAT number or UID. The form of this entity is 'CHE-ddd.ddd.ddd' which is a string 'CHE-' followed by three times three digits separated by a dot. Return an entity of this form. \n
+        Step 3) Date. \n
+        Description: Date when the receipt is issued, in one of standard date formats. Extract this date and return it in a format 'dd.mm.yyyy'. \n
+        Step 4) Amount. \n
+        Description: Total amount of the invoice to be paid. Usually comes around strings 'Total', 'Betrag', 'Sum'. Extract the total amount as a number, and use the dot as a separator for decimal values. \n
+        ####\n
+        \n
+        EXAMPLE \n
+        \n
+        In addition to the above list, I will provide you with an example of a succesful extraction in a desired output format.\n
+        The example is given below and delimited by $$$$ token. They contain INPUT_TEXT from which the information should be extracted, and OUTPUT_TEXT showing the correct extraction in form of a JSON object or a Python dictionary. \n
+        \n
+        Example 1 \n
+        \n
+        $$$$\n
+        \n
+        INPUT_TEXT = MIGRO GENOSSENSCHAFT MIGROS ZÃœRICH TAKE AWAY GLATT TEL. 044 839 20 --- UNSERE OEFFNUNGSZEITEN MO-SA: 09:00-20:00 CH Baguette weiss 3 X 2.20 6.60 I SEMMELI 5 X 1.10 5.50 1 TOTAL 12.10 BAR 12.10 MWST-NUMMER: CHE-105.970.604 MWST GR MWST% TOTAL HWST 1 2.50 12.10 0.30 CUMULUS-NUMMER: 2099.555.613.481 ERHALTENE PUNKTE: 12.100 BESTEN DANK FOR IHREN EINKAUF! 0940338826090000001210 VERKAEUFER: 0000038 Cuasay Marsha ART 00008 TRANSAKTION: 03388 C BEDIEN. KNR KST. DATUM ZEIT 0000894 094 150564 26.02.2020 09:00 \n
+        \n
+        OUTPUT_TEXT =  {{
+            "Supplier company name": "MIGRO GENOSSENSCHAFT" , 
+            "Supplier VAT number": "CHE-105.970.604" , 
+            "Date": "26.02.2020", 
+            "Amount": "12.10"}}
+             \n
+        $$$$\n
+        \n
+        NEW EXTRACTION TASK \n
+        \n
+        Based on the task description, and the given example, extract the information for the following NEW_INPUT_TEXT delimited by %%%% token. \n
+        %%%% \n
+        NEW_INPUT_TEXT: {text_extract}\n
+        %%%% \n
+        Take your time and think about the problem step by step. \n
+        Use the example only to better understand the task and the form of the output, but do not return the output of the example unless the input is such that new extraction is equal to the example for some or all entities. \n
+        Take into account the task description, the list of entities with corresponding descriptions, and the given example of a successful extraction. \n
+        Return the output in the same form as in the given example, that is, output should be only the JSON object or a Python dictionary with extracted entities without any additional text. \n
+        If you are uncertain about some extracted entities, by taking into account their descriptions, it is better to return an empty string instead of wrong information for that extraction.
+        """
