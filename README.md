@@ -36,7 +36,7 @@ Abstract: Large language models (LLMs) have substantially altered the landscape 
 
 ## Folder results:
 
-- results_AWS.ipynb is a script for printing the results of AWS Analyze Expense API model.
-- results_LLMs.ipynb is a script for printing the results of LLMs.
+- results_NER.ipynb is a script for printing the results of NER-based approaches: AWS Analyze Expense API and BERT.
+- results_LLMs.ipynb is a script for printing the results of prompt-based approaches: LLMs.
 - the remaining files with .pickle extension are stored results from running scripts in folder code. 
 
